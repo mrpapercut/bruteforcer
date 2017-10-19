@@ -20,11 +20,11 @@ print bf.match(13599570816, hasher)
 
 class BruteForcer:
     def __init__(self, minlength = 1, maxlength = 8, alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789', initializeArr = None):
-        self.roundcount = 0
-        self.minlength  = minlength
-        self.maxlength  = maxlength
-        self.alphabet   = alphabet
-        self.alphaArray = list(self.alphabet)
+        self.roundcount   = 0
+        self.minlength    = minlength
+        self.maxlength    = maxlength
+        self.alphabet     = alphabet
+        self.alphaArray   = list(self.alphabet)
         self.workingArray = []
 
         if (minlength > maxlength):
@@ -86,9 +86,9 @@ class BruteForcer:
 
         # Check index of self.workingArray
           # - if entry is equal to last char of alphabet, reset to first character, and
-            # - if there is a previous entry, recurse
-            # - else if length workArray < this.maxlength, prepend alphabet[0] to workArray
-            # - else if length workArray === this.maxlength, and all characters at max, end
+            # - if there is a previous entry, decrement the workingIndex and recurse
+            # - else if length workingArray < this.maxlength, prepend alphabet[0] to workArray
+            # - else if length workingArray === this.maxlength, and all characters at max, end
           # - else up the current character
 
         if (self.alphaArray.index(self.workingArray[self.workingIndex]) == len(self.alphaArray) - 1):
