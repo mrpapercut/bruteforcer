@@ -18,12 +18,12 @@ console.log(bf.match(13599570816, hasher));
 */
 
 class BruteForcer {
-    constructor(minlength, maxlength, alphabet, initializeArr) {
+    constructor(minlength, maxlength, charset, initializeArray) {
         this.roundcount   = 0;
         this.minlength    = minlength || 1;
         this.maxlength    = maxlength || 8;
-        this.alphabet     = alphabet  || 'abcdefghijklmnopqrstuvwxyz0123456789';
-        this.alphaArray   = this.alphabet.split('');
+        this.charset      = charset   || 'abcdefghijklmnopqrstuvwxyz0123456789';
+        this.alphaArray   = this.charset.split('');
         this.workingArray = [];
 
         if (this.minlength > this.maxlength) {
@@ -31,19 +31,19 @@ class BruteForcer {
         }
 
         // Initialize working array
-        if (initializeArr && initializeArr instanceof Array) {
-            this.workingArray = initializeArr;
+        if (initializeArray && initializeArray instanceof Array) {
+            this.workingArray = initializeArray;
 
-            if (initializeArr.length < this.minlength) {
+            if (initializeArray.length < this.minlength) {
                 // Pad with character alphaArray[0]
-                for (var i = initializeArr.length; i < this.minlength; i++) {
+                for (var i = initializeArray.length; i < this.minlength; i++) {
                     this.workingArray.push(this.alphaArray[0]);
                 }
             } else {
-                this.minlength = initializeArr.length;
+                this.minlength = initializeArray.length;
             }
         } else {
-            for (i = 0; i < this.minlength; i++) {
+            for (var i = 0; i < this.minlength; i++) {
                 this.workingArray.push(this.alphaArray[0]);
             }
         }
@@ -89,9 +89,9 @@ class BruteForcer {
         At start, this.workingIndex is the last entry of workingArray
 
         Check index of this.workingArray
-          - if entry is equal to last char of alphabet, reset to first character, and
+          - if entry is equal to last char of charset, reset to first character, and
             - if there is a previous entry, decrement the workingIndex and recurse
-            - else if length workingArray < this.maxlength, prepend alphabet[0] to workArray
+            - else if length workingArray < this.maxlength, prepend charset[0] to workArray
             - else if length workingArray === this.maxlength, and all characters at max, end
           - else up the current character
         */
@@ -107,7 +107,10 @@ class BruteForcer {
                 die('No matches found');
             }
         } else {
-            this.workingArray[this.workingIndex] = this.alphaArray[this.alphaArray.indexOf(this.workingArray[this.workingIndex]) + 1];
+            this.workingArray[this.workingIndex] =
+                this.alphaArray[this.alphaArray.indexOf(this.workingArray[this.workingIndex]) + 1];
         }
     }
 }
+
+module.exports = BruteForcer;
