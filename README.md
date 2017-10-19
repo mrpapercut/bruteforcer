@@ -8,10 +8,10 @@
 ## Usage
 new BruteForcer((int) minLength, (int) maxLength, (string) alphabet, (array) initializeArray)
 
-**minLength** is minimum length of bruteforce characters, default = 1
-**maxLength** is maximum length of bruteforce characters, default = 8
-**alphabet**  is a string of characters to use in bruteforcing, default = 'abcdefghijklmnopqrstuvwxyz0123456789'
-**initializeArray** is an array of characters to initialize the bruteforcer*, default is null
+* **minLength** is minimum length of bruteforce characters, default = 1
+* **maxLength** is maximum length of bruteforce characters, default = 8
+* **alphabet**  is a string of characters to use in bruteforcing, default = 'abcdefghijklmnopqrstuvwxyz0123456789'
+* **initializeArray** is an array of characters to initialize the bruteforcer*, default is null
 
 \* If you want to start bruteforcing with string 'zaaaa' with minlength 5, use initializeArray = ['z']
 
@@ -58,7 +58,7 @@ echo $bf->match(13599570816, $hasher);
 ```
 
 ### Python
-```
+```python
 bf = BruteForcer()
 print bf.match('hello')
 ```
