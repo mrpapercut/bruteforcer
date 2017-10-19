@@ -105,9 +105,9 @@ class BruteForcer {
 
         Check index of $this->workingArray
           - if entry is equal to last char of alphabet, reset to first character, and
-            - if there is a previous entry, recurse
-            - else if length workArray < this.maxlength, prepend alphabet[0] to workArray
-            - else if length workArray === this.maxlength, and all characters at max, end
+            - if there is a previous entry, decrement the workingIndex and recurse
+            - else if length workingArray < this.maxlength, prepend alphabet[0] to workArray
+            - else if length workingArray === this.maxlength, and all characters at max, end
           - else up the current character
         */
         if (array_search($this->workingArray[$this->workingIndex], $this->alphaArray) === count($this->alphaArray) - 1) {
